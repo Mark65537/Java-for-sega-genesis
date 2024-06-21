@@ -24,10 +24,10 @@ jobs:
 
     - name: Commit and push changes
       env:
-        GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        git config --global user.name 'mark65537'
-        git config --global user.email 'mark65537@users.noreply.github.com'
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         git checkout -b markdown
         git add README.md
         git commit -m 'Convert index.html to README.md'
