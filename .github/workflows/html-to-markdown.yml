@@ -1,0 +1,36 @@
+name: Convert HTML to Markdown
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install html-to-markdown
+      run: npm install -g @soapdog/html-to-markdown
+
+    - name: Convert index.html to README.md
+      run: html-to-markdown index.html > README.md
+
+    - name: Commit and push changes
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git checkout -b markdown
+        git add README.md
+        git commit -m 'Convert index.html to README.md'
+        git push --force --set-upstream origin markdown
