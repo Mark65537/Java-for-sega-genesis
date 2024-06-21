@@ -13,16 +13,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-
-    - name: Install html-to-markdown
-      run: npm install -g @soapdog/html-to-markdown
+    - name: Install pandoc
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y pandoc
 
     - name: Convert index.html to README.md
-      run: html-to-markdown index.html > README.md
+      run: |
+        pandoc -f html -t markdown -o README.md index.html
 
     - name: Commit and push changes
       env:
