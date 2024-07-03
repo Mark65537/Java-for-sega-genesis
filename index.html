@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Page Loader</title>
+    <title>Java for Sega Mega Drive</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -34,6 +34,10 @@
                     console.error('Error loading page:', error);
                 });
         }
+        // Загрузка страницы по умолчанию
+        window.onload = function() {
+            loadPage('ru');
+        };
     </script>
 </body>
 </html>
