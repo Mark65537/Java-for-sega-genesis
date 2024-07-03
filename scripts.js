@@ -10,3 +10,8 @@ function loadPage(language) {
             console.error('Error loading page:', error);
         });
 }
+
+// Загрузка страницы по умолчанию
+window.onload = function() {
+    loadPage('ru');
+};
