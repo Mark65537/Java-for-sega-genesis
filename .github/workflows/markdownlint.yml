@@ -3,7 +3,7 @@ name: Markdownlint
 on:
   push:
     branches:
-      - main
+      - markdown
     paths:
       - "**/*.md"
       - ".markdownlint-cli2.jsonc"
